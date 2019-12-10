@@ -29,4 +29,4 @@ php ~/public_html/index.php update migrate
 
 
 #TESTES UNTIARIOS
-php ~/public_html/index.php utest
+#php ~/public_html/index.php utest
