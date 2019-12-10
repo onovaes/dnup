@@ -25,6 +25,7 @@ printf "\n"
 
 
 #MIGRATIONS
+php ~/public_html/index.php dnutils pre_migration
 php ~/public_html/index.php update migrate
 php ~/public_html/dothnews/index.php update migrate
 
