@@ -1,4 +1,4 @@
-# Shell Script para atualização de dothnews nas vm's
+# Shell Script para atualização de DN nas VM's
 
 Atualiza o SGI, o core, roda as migrations e testes unitários.
 
