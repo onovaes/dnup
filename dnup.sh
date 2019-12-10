@@ -32,3 +32,6 @@ php ~/public_html/dothnews/index.php update migrate
 
 #TESTES UNTIARIOS
 php ~/public_html/index.php utest
+
+#TEMPORARIAMENTE - GOOGLE ANALYTICS MAI LIDAS
+php ~/public_html/index.php dnutils google mais_lidas
