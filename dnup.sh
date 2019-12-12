@@ -5,14 +5,14 @@
 printf "\n"
 cd ~/public_html/dothnews/
 echo 'Atualizando o SGI...'
-/usr/local/cpanel/3rdparty/bin/git pull && git describe > version.txt
+/usr/local/cpanel/3rdparty/bin/git pull && /usr/local/cpanel/3rdparty/bin/git describe --always > version.txt
 
 
 # ATUALIZA O CORE
 printf "\n"
 echo 'Atualizando o core do dothnews...'
 cd ~/public_html/
-/usr/local/cpanel/3rdparty/bin/git pull && git describe > version.txt
+/usr/local/cpanel/3rdparty/bin/git pull && /usr/local/cpanel/3rdparty/bin/git describe > version.txt
 
 
 #SETA PERMISSOES CORRETAS
