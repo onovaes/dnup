@@ -18,11 +18,16 @@ cd ~/public_html/
 #SETA PERMISSOES CORRETAS
 printf "\n"
 echo 'Permissão 644 em arquivos executaveis'
-chmod 644 ~/public_html/dothnews/index.php
 chmod 644 ~/public_html/image.php  
 chmod 644 ~/public_html/index.php
 printf "\n"
 
+#SETA PERMISSOES CORRETAS
+printf "\n"
+echo 'Seta 755 to diretorios and 644 to files na pasta SGI'
+find ~/public_html/dothnews -type d -print0 | xargs -0 chmod 0755
+find ~/public_html/dothnews -type f -print0 | xargs -0 chmod 0644
+printf "\n"
 
 #MIGRATIONS
 php ~/public_html/index.php dnutils pre_migration
