@@ -1,13 +1,15 @@
 #!/bin/bash
 
+
+### ATUALIZANDO O SGI
+printf "\n\n"
+cd ~/public_html/dothnews/
+
 # Garantindo que o git esteja com fileMode false
 printf "\n"
 echo 'Set file mode no GIT'
 /usr/local/cpanel/3rdparty/bin/git config core.fileMode false
 
-# ATUALIZANDO O SGI
-printf "\n\n"
-cd ~/public_html/dothnews/
 echo 'Versao atual do SGI '
 /usr/local/cpanel/3rdparty/bin/git describe
 printf "\n"
@@ -18,9 +20,15 @@ printf "\n"
 echo 'Nova versao do SGI '
 cat version.txt
 
-# ATUALIZA O CORE
+### ATUALIZA O CORE
 printf "\n\n"
 cd ~/public_html/
+
+# Garantindo que o git esteja com fileMode false
+printf "\n"
+echo 'Set file mode no GIT'
+/usr/local/cpanel/3rdparty/bin/git config core.fileMode false
+
 echo 'Versao atual do CORE DO NEWS '
 /usr/local/cpanel/3rdparty/bin/git describe
 printf "\n"
