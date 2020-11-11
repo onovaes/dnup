@@ -13,6 +13,7 @@ echo 'Versao atual do SGI '
 printf "\n"
 echo 'Atualizando o SGI...'
 /usr/local/cpanel/3rdparty/bin/git pull && /usr/local/cpanel/3rdparty/bin/git describe --always > version.txt
+echo "DATE_DEPLOY="$(date) >> version.txt
 printf "\n"
 echo 'Nova versao do SGI '
 cat version.txt
@@ -25,6 +26,7 @@ echo 'Versao atual do CORE DO NEWS '
 printf "\n"
 echo 'Atualizando o core do dothnews...'
 /usr/local/cpanel/3rdparty/bin/git pull && /usr/local/cpanel/3rdparty/bin/git describe > version.txt
+echo "DATE_DEPLOY="$(date) >> version.txt
 printf "\n"
 echo 'Nova versao do CORE do NEWS '
 cat version.txt
