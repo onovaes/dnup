@@ -66,3 +66,6 @@ php ~/public_html/index.php utest
 
 #TEMPORARIAMENTE - GOOGLE ANALYTICS MAI LIDAS
 #php ~/public_html/index.php dnutils google mais_lidas
+
+echo 'Versao implementada: '
+cat version.txt
