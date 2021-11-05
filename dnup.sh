@@ -44,7 +44,7 @@ cat version.txt
 #SETA PERMISSOES CORRETAS
 printf "\n\n"
 echo 'Permissão 644 em arquivos executaveis'
-chmod 644 ~/public_html/image.php  
+chmod 644 ~/public_html/image.php
 chmod 644 ~/public_html/index.php
 printf "\n"
 
@@ -55,23 +55,26 @@ find ~/public_html/dothnews -type d -print0 | xargs -0 chmod 0755
 find ~/public_html/dothnews -type f -print0 | xargs -0 chmod 0644
 printf "\n"
 
-#MIGRATIONS
-php ~/public_html/index.php dnutils pre_migration
+#MIGRATIONS E TESTES UNITARIOS
+if test -f "/opt/cpanel/ea-php54/root/usr/bin/php"; then
+  /opt/cpanel/ea-php54/root/usr/bin/php ~/public_html/index.php dnutils pre_migration
+  /opt/cpanel/ea-php54/root/usr/bin/php ~/public_html/index.php update migrate
+  /opt/cpanel/ea-php54/root/usr/bin/php ~/public_html/dothnews/index.php update migrate
 
-if test -f "~/.config-dothnews.php"; then
+  /opt/cpanel/ea-php54/root/usr/bin/php ~/public_html/index.php utest
+
+  #GOOGLE ANALYTICS MAI LIDAS
+  #/opt/cpanel/ea-php54/root/usr/bin/php ~/public_html/index.php dnutils google mais_lidas
+else
+  php ~/public_html/index.php dnutils pre_migration
   php ~/public_html/index.php update migrate
   php ~/public_html/dothnews/index.php update migrate
-else
-  /bin/php ~/public_html/index.php update migrate
-  /bin/php ~/public_html/dothnews/index.php update migrate
+
+  php ~/public_html/index.php utest
+
+  #GOOGLE ANALYTICS MAI LIDAS
+  #php ~/public_html/index.php dnutils google mais_lidas
 fi
-
-
-#TESTES UNTIARIOS
-php ~/public_html/index.php utest
-
-#TEMPORARIAMENTE - GOOGLE ANALYTICS MAI LIDAS
-#php ~/public_html/index.php dnutils google mais_lidas
 
 echo 'Versao implementada: '
 cat version.txt
