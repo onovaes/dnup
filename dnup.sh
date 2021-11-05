@@ -57,14 +57,12 @@ printf "\n"
 
 #VERSAO DO PHP
 printf "\n\n"
-echo 'php -v'
+echo 'Versão do PHP'
 php -v
 
-printf "\n\n"
-echo '/usr/local/cpanel/3rdparty/bin/php -v'
-/usr/local/cpanel/3rdparty/bin/php -v
 
 #MIGRATIONS
+printf "\n\nInicio Migrations\n"
 #php ~/public_html/index.php dnutils pre_migration
 #php ~/public_html/index.php update migrate
 php ~/public_html/dothnews/index.php update migrate
