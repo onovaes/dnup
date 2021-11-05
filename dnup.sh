@@ -56,7 +56,11 @@ find ~/public_html/dothnews -type f -print0 | xargs -0 chmod 0644
 printf "\n"
 
 #VERSAO DO PHP
+echo 'php -v'
 php -v
+
+echo '/usr/local/cpanel/3rdparty/bin/php -v'
+/usr/local/cpanel/3rdparty/bin/php -v
 
 #MIGRATIONS
 #php ~/public_html/index.php dnutils pre_migration
