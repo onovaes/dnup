@@ -57,8 +57,14 @@ printf "\n"
 
 #MIGRATIONS
 php ~/public_html/index.php dnutils pre_migration
-php ~/public_html/index.php update migrate
-php ~/public_html/dothnews/index.php update migrate
+
+if test -f "~/.config-dothnews.php"; then
+  php ~/public_html/index.php update migrate
+  php ~/public_html/dothnews/index.php update migrate
+else
+  /bin/php ~/public_html/index.php update migrate
+  /bin/php ~/public_html/dothnews/index.php update migrate
+fi
 
 
 #TESTES UNTIARIOS
