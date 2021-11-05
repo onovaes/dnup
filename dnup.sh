@@ -56,7 +56,7 @@ find ~/public_html/dothnews -type f -print0 | xargs -0 chmod 0644
 printf "\n"
 
 #VERSAO DO PHP
-printf "\n\n Versão do PHP:\n"
+printf "\n\nVersão do PHP:\n"
 php -v
 
 #Printa Home Atual
@@ -68,11 +68,13 @@ echo $HOME
 printf "\n\nINICIO MIGRATIONS:\n"
 #php ~/public_html/index.php dnutils pre_migration
 #php ~/public_html/index.php update migrate
-php ~/public_html/dothnews/index.php update migrate
+php -f $HOME/public_html/dothnews/index.php update migrate
 
 
 #TESTES UNTIARIOS
 #php ~/public_html/index.php utest
+
+
 
 #TEMPORARIAMENTE - GOOGLE ANALYTICS MAI LIDAS
 #php ~/public_html/index.php dnutils google mais_lidas
