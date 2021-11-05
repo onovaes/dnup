@@ -67,7 +67,7 @@ echo '/usr/local/cpanel/3rdparty/bin/php -v'
 #MIGRATIONS
 #php ~/public_html/index.php dnutils pre_migration
 #php ~/public_html/index.php update migrate
-#php ~/public_html/dothnews/index.php update migrate
+php ~/public_html/dothnews/index.php update migrate
 
 
 #TESTES UNTIARIOS
