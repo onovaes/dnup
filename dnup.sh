@@ -56,9 +56,11 @@ find ~/public_html/dothnews -type f -print0 | xargs -0 chmod 0644
 printf "\n"
 
 #VERSAO DO PHP
+printf "\n\n"
 echo 'php -v'
 php -v
 
+printf "\n\n"
 echo '/usr/local/cpanel/3rdparty/bin/php -v'
 /usr/local/cpanel/3rdparty/bin/php -v
 
