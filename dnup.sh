@@ -62,7 +62,7 @@ printf "\n"
 
 
 #TESTES UNTIARIOS
-php ~/public_html/index.php utest
+#php ~/public_html/index.php utest
 
 #TEMPORARIAMENTE - GOOGLE ANALYTICS MAI LIDAS
 #php ~/public_html/index.php dnutils google mais_lidas
