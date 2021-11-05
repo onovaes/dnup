@@ -56,8 +56,7 @@ find ~/public_html/dothnews -type f -print0 | xargs -0 chmod 0644
 printf "\n"
 
 #VERSAO DO PHP
-printf "\n\n"
-echo 'Versão do PHP'
+printf "\n\n Versão do PHP:\n"
 php -v
 
 #Printa Home Atual
