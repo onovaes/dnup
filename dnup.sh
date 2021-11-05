@@ -60,8 +60,8 @@ printf "\n\n"
 echo 'Versão do PHP'
 php -v
 
-#HOME ATUAL
-printf "\n\nHOME ATUAL"
+#Printa Home Atual
+printf "\n\nHOME ATUAL:\n"
 echo $HOME
 
 
