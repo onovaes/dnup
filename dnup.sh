@@ -1,6 +1,15 @@
 #!/bin/bash
 
 
+#VERSAO DO PHP SOMENTE A NIVEL DE INFORMACAO
+printf "\n\nVersão do PHP:\n"
+php -v
+
+#Printa Home Atual SOMENTE A NIVEL DE INFORMACAO
+printf "\n\nHOME ATUAL:\n"
+echo $HOME
+
+
 ### ATUALIZANDO O SGI
 printf "\n\n"
 cd ~/public_html/dothnews/
@@ -55,22 +64,13 @@ find ~/public_html/dothnews -type d -print0 | xargs -0 chmod 0755
 find ~/public_html/dothnews -type f -print0 | xargs -0 chmod 0644
 printf "\n"
 
-#VERSAO DO PHP
-printf "\n\nVersão do PHP:\n"
-php -v
-
-#Printa Home Atual
-printf "\n\nHOME ATUAL:\n"
-echo $HOME
 
 
 #MIGRATIONS
 printf "\n\nINICIO MIGRATIONS:\n"
-#php ~/public_html/index.php dnutils pre_migration
-#php ~/public_html/index.php update migrate
-#php ~/public_html/dothnews/index.php update migrate
-
-php -f $HOME/public_html/index.php update migrate
+php ~/public_html/index.php dnutils pre_migration
+php ~/public_html/index.php update migrate
+php ~/public_html/dothnews/index.php update migrate
 printf "\nFIM MIGRATIONS:\n"
 
 
