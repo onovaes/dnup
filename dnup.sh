@@ -69,11 +69,11 @@ printf "\n"
 # MIGRATIONS
 printf "\n\nINICIO MIGRATIONS:\n"
 
-if test -f "/opt/cpanel/ea-php54/root/usr/bin/php"; then
-    /opt/cpanel/ea-php54/root/usr/bin/php ~/public_html/index.php dnutils pre_migration
-    /opt/cpanel/ea-php54/root/usr/bin/php ~/public_html/index.php update migrate
-    /opt/cpanel/ea-php54/root/usr/bin/php ~/public_html/dothnews/index.php update migrate
-    /opt/cpanel/ea-php54/root/usr/bin/php ~/public_html/index.php utest
+if test -f "/usr/local/bin/php"; then
+    /usr/local/bin/php ~/public_html/index.php dnutils pre_migration
+    /usr/local/bin/php ~/public_html/index.php update migrate
+    /usr/local/bin/php ~/public_html/dothnews/index.php update migrate
+    /usr/local/bin/php ~/public_html/index.php utest
 else
     php ~/public_html/index.php dnutils pre_migration
     php ~/public_html/index.php update migrate
