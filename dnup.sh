@@ -68,21 +68,20 @@ printf "\n"
 
 # MIGRATIONS
 printf "\n\nINICIO MIGRATIONS:\n"
-/opt/cpanel/ea-php54/root/usr/bin/php ~/public_html/index.php dnutils pre_migration
-printf "\n"
-/opt/cpanel/ea-php54/root/usr/bin/php ~/public_html/index.php update migrate
-printf "\n"
-/opt/cpanel/ea-php54/root/usr/bin/php ~/public_html/dothnews/index.php update migrate
+
+if test -f "/opt/cpanel/ea-php54/root/usr/bin/php"; then
+    /opt/cpanel/ea-php54/root/usr/bin/php ~/public_html/index.php dnutils pre_migration
+    /opt/cpanel/ea-php54/root/usr/bin/php ~/public_html/index.php update migrate
+    /opt/cpanel/ea-php54/root/usr/bin/php ~/public_html/dothnews/index.php update migrate
+    /opt/cpanel/ea-php54/root/usr/bin/php ~/public_html/index.php utest
+else
+    php ~/public_html/index.php dnutils pre_migration
+    php ~/public_html/index.php update migrate
+    php ~/public_html/dothnews/index.php update migrate
+    php ~/public_html/index.php utest
+fi
+
 printf "\nFIM MIGRATIONS:\n\n"
-
-
-#TESTES UNTIARIOS
-#php ~/public_html/index.php utest
-
-
-
-#TEMPORARIAMENTE - GOOGLE ANALYTICS MAI LIDAS
-#php ~/public_html/index.php dnutils google mais_lidas
 
 echo 'Versao implementada: '
 cat version.txt
