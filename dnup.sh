@@ -1,5 +1,4 @@
-#!/bin/bash
-
+#!/usr/bin/php
 
 #VERSAO DO PHP SOMENTE A NIVEL DE INFORMACAO
 printf "\n\nVersão do PHP:\n"
