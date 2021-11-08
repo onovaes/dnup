@@ -66,10 +66,12 @@ printf "\n"
 
 
 
-#MIGRATIONS
+# MIGRATIONS
 printf "\n\nINICIO MIGRATIONS:\n"
 php ~/public_html/index.php dnutils pre_migration
+printf "\n"
 php ~/public_html/index.php update migrate
+printf "\n"
 php ~/public_html/dothnews/index.php update migrate
 printf "\nFIM MIGRATIONS:\n"
 
