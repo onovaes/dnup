@@ -6,7 +6,7 @@ printf "\n\nVersão do PHP:\n"
 php -v
 
 #Printa Home Atual SOMENTE A NIVEL DE INFORMACAO
-printf "\n\nHOME ATUAL:\n"
+printf "\n\nHOME ATUAL: "
 echo $HOME
 
 
@@ -73,7 +73,7 @@ printf "\n"
 php ~/public_html/index.php update migrate
 printf "\n"
 php ~/public_html/dothnews/index.php update migrate
-printf "\nFIM MIGRATIONS:\n"
+printf "\nFIM MIGRATIONS:\n\n"
 
 
 #TESTES UNTIARIOS
