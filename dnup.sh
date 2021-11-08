@@ -1,4 +1,5 @@
-#!/usr/bin/php
+#!/bin/bash
+
 
 #VERSAO DO PHP SOMENTE A NIVEL DE INFORMACAO
 printf "\n\nVersão do PHP:\n"
@@ -67,11 +68,11 @@ printf "\n"
 
 # MIGRATIONS
 printf "\n\nINICIO MIGRATIONS:\n"
-php ~/public_html/index.php dnutils pre_migration
+/opt/cpanel/ea-php54/root/usr/bin/php ~/public_html/index.php dnutils pre_migration
 printf "\n"
-php ~/public_html/index.php update migrate
+/opt/cpanel/ea-php54/root/usr/bin/php ~/public_html/index.php update migrate
 printf "\n"
-php ~/public_html/dothnews/index.php update migrate
+/opt/cpanel/ea-php54/root/usr/bin/php ~/public_html/dothnews/index.php update migrate
 printf "\nFIM MIGRATIONS:\n\n"
 
 
