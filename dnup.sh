@@ -86,6 +86,7 @@ else
     php ~/public_html/dothnews/index.php update migrate
     printf "\nFIM MIGRATIONS:\n"
 
+    printf "\nInicia testes Unitários:\n"
     php ~/public_html/index.php utest
 fi
 
