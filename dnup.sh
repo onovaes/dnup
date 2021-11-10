@@ -22,11 +22,11 @@ echo 'Set file mode no GIT'
 echo 'Versao atual do SGI '
 /usr/local/cpanel/3rdparty/bin/git describe
 printf "\n"
-echo 'Atualizando o SGI...'
+echo 'Iniciando PULL do SGI ...'
 /usr/local/cpanel/3rdparty/bin/git pull && /usr/local/cpanel/3rdparty/bin/git describe --always > version.txt
 echo "DATE_DEPLOY="$(date) >> version.txt
 printf "\n"
-echo 'Nova versao do SGI '
+echo 'Versão do SGI Implementada:'
 cat version.txt
 
 ### ATUALIZA O CORE
@@ -41,25 +41,25 @@ echo 'Set file mode no GIT'
 echo 'Versao atual do CORE DO NEWS '
 /usr/local/cpanel/3rdparty/bin/git describe
 printf "\n"
-echo 'Atualizando o core do dothnews...'
+echo 'Iniciando PULL do core ...'
 /usr/local/cpanel/3rdparty/bin/git pull && /usr/local/cpanel/3rdparty/bin/git describe > version.txt
 echo "DATE_DEPLOY="$(date) >> version.txt
 printf "\n"
-echo 'Nova versao do CORE do NEWS '
+echo 'Versão do Core Implementada:'
 cat version.txt
 
 
 
 #SETA PERMISSOES CORRETAS
 printf "\n\n"
-echo 'Permissão 644 em arquivos executaveis'
+echo 'Seta Permissão 644 nos arquivos image.php e index.php'
 chmod 644 ~/public_html/image.php  
 chmod 644 ~/public_html/index.php
 printf "\n"
 
 #SETA PERMISSOES CORRETAS
 printf "\n\n"
-echo 'Seta 755 to diretorios and 644 to files na pasta SGI'
+echo 'Seta Permissão 755 para 644 para files na pasta SGI'
 find ~/public_html/dothnews -type d -print0 | xargs -0 chmod 0755
 find ~/public_html/dothnews -type f -print0 | xargs -0 chmod 0644
 printf "\n"
@@ -71,17 +71,25 @@ printf "\n\nINICIO MIGRATIONS:\n"
 
 if test -f "/usr/local/bin/php"; then
     /usr/local/bin/php ~/public_html/index.php dnutils pre_migration
+    printf "\n"
     /usr/local/bin/php ~/public_html/index.php update migrate
+    printf "\n"
     /usr/local/bin/php ~/public_html/dothnews/index.php update migrate
+    printf "\nFIM MIGRATIONS:\n"
+
     /usr/local/bin/php ~/public_html/index.php utest
 else
     php ~/public_html/index.php dnutils pre_migration
+    printf "\n"
     php ~/public_html/index.php update migrate
+    printf "\n"
     php ~/public_html/dothnews/index.php update migrate
+    printf "\nFIM MIGRATIONS:\n"
+
     php ~/public_html/index.php utest
 fi
 
-printf "\nFIM MIGRATIONS:\n\n"
+
 
 echo 'Versao implementada: '
 cat version.txt
