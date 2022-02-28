@@ -1,4 +1,4 @@
-# Shell Script para atualização de DN nas VM's (CPANEL)
+# Shell Script para atualização de DN nas VM's 
 
 Atualiza o SGI, o Core, Roda as migrations e testes unitários. 
 
