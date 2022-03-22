@@ -28,6 +28,11 @@ echo 'Versão do Core Implementada:'
 cat version.txt
 ### END ATUALIZA O CORE
 
+#CSV info files
+/usr/bin/git describe > version.csv
+";" >> version.csv
+/usr/bin/git rev-parse --abbrev-ref HEAD >> version.txt
+";" >> version.csv
 
 #SETA PERMISSOES CORRETAS  image.php e index.php
 printf "\n\n"
