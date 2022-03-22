@@ -31,7 +31,7 @@ cat version.txt
 #CSV info files version.csv
 DESCRIBE_VERSION=$(/usr/bin/git describe)
 BRANCH_NAME=$(/usr/bin/git rev-parse --abbrev-ref HEAD)
-echo -ne "$DESCRIBE_VERSION, $BRANCH_NAME" > version.csv
+echo -ne "$DESCRIBE_VERSION, $BRANCH_NAME" > version.log
 
 #SETA PERMISSOES CORRETAS  image.php e index.php
 printf "\n\n"
