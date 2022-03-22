@@ -17,21 +17,17 @@ git describe
 printf "\n"
 
 echo 'Iniciando PULL  ...'
-/usr/bin/git pull && /usr/bin/git describe > version.txt
+/usr/bin/git pull 
 
-#get current branch
-/usr/bin/git rev-parse --abbrev-ref HEAD >> version.txt
-
-echo "DATE_DEPLOY="$(date) >> version.txt
 printf "\n"
 echo 'Versão do Core Implementada:'
-cat version.txt
-### END ATUALIZA O CORE
+/usr/bin/git describe 
 
-#CSV info files version.csv
+#Gera o txt com as infos no formato CSV
 DESCRIBE_VERSION=$(/usr/bin/git describe)
 BRANCH_NAME=$(/usr/bin/git rev-parse --abbrev-ref HEAD)
-echo -ne "$DESCRIBE_VERSION, $BRANCH_NAME" > version.csv
+DEPLOY_DATE=$(date)
+echo -ne "$DESCRIBE_VERSION, $BRANCH_NAME, $DEPLOY_DATE" > version.txt
 
 #SETA PERMISSOES CORRETAS  image.php e index.php
 printf "\n\n"
