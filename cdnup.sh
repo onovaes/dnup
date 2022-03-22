@@ -18,6 +18,10 @@ printf "\n"
 
 echo 'Iniciando PULL  ...'
 /usr/bin/git pull && /usr/bin/git describe > version.txt
+
+#get current branch
+/usr/bin/git rev-parse --abbrev-ref HEAD >> version.txt
+
 echo "DATE_DEPLOY="$(date) >> version.txt
 printf "\n"
 echo 'Versão do Core Implementada:'
