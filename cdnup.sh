@@ -27,7 +27,8 @@ echo 'Versão do Core Implementada:'
 DESCRIBE_VERSION=$(/usr/bin/git describe)
 BRANCH_NAME=$(/usr/bin/git rev-parse --abbrev-ref HEAD)
 DEPLOY_DATE=$(date)
-echo -ne "$DESCRIBE_VERSION, $BRANCH_NAME, $DEPLOY_DATE" > version.txt
+echo "$DESCRIBE_VERSION-$BRANCH_NAME" > version.txt
+echo "$DEPLOY_DATE" >> version.txt
 
 #SETA PERMISSOES CORRETAS  image.php e index.php
 printf "\n\n"
