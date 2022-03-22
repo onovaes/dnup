@@ -29,10 +29,11 @@ cat version.txt
 ### END ATUALIZA O CORE
 
 #CSV info files version.csv
-/usr/bin/git describe > version.csv
-echo ";" >> version.csv
+/usr/bin/git describe >> version.csv
+#echo ";" >> version.csv
 /usr/bin/git rev-parse --abbrev-ref HEAD >> version.csv
-echo ";" >> version.csv
+#echo ";" >> version.csv
+
 
 #SETA PERMISSOES CORRETAS  image.php e index.php
 printf "\n\n"
