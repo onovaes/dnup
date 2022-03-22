@@ -29,9 +29,9 @@ cat version.txt
 ### END ATUALIZA O CORE
 
 #CSV info files version.csv
-/usr/bin/git describe > version.csv
-echo  -ne "," >> version.csv
-/usr/bin/git rev-parse --abbrev-ref HEAD >> version.csv
+DESCRIBE_VERSION=$(/usr/bin/git describe)
+BRANCH_NAME=$(/usr/bin/git rev-parse --abbrev-ref HEAD)
+echo "$DESCRIBE_VERSION, $BRANCH_NAME" >> log.csv
 
 #SETA PERMISSOES CORRETAS  image.php e index.php
 printf "\n\n"
