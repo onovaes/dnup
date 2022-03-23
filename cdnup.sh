@@ -20,7 +20,7 @@ echo 'Iniciando PULL  ...'
 /usr/bin/git pull 
 
 printf "\n"
-echo 'Versão do Core Implementada:'
+echo 'Nova Versão Instalada:'
 /usr/bin/git describe 
 
 #Gera o txt com as infos no formato CSV
