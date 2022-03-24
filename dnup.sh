@@ -1,54 +1,62 @@
 #!/bin/bash
 
-
-#VERSAO DO PHP SOMENTE A NIVEL DE INFORMACAO
-printf "\n\nVersão do PHP:\n"
-php -v
-
-#Printa Home Atual SOMENTE A NIVEL DE INFORMACAO
 printf "\n\nHOME ATUAL: "
 echo $HOME
 
 
+###########################
 ### BEGIN ATUALIZANDO O SGI
 printf "\n\n"
 cd ~/public_html/dothnews/
 
-# Garantindo que o git esteja com fileMode false
 printf "\n"
 echo 'Set file mode FALSE no GIT'
 /usr/local/cpanel/3rdparty/bin/git config core.fileMode false
 
 echo 'Versao atual do SGI '
 /usr/local/cpanel/3rdparty/bin/git describe
+
 printf "\n"
 echo 'Iniciando PULL do SGI ...'
-/usr/local/cpanel/3rdparty/bin/git pull && /usr/local/cpanel/3rdparty/bin/git describe --always > version.txt
-echo "DATE_DEPLOY="$(date) >> version.txt
-printf "\n"
-echo 'Versão do SGI Implementada:'
-cat version.txt
-### END ATUALIZANDO O SGI
+/usr/local/cpanel/3rdparty/bin/git pull 
 
+#Gera o txt com as infos nde versao
+DESCRIBE_VERSION=$(/usr/local/cpanel/3rdparty/bin/git describe)
+BRANCH_NAME=$(/usr/local/cpanel/3rdparty/bin/git rev-parse --abbrev-ref HEAD)
+DEPLOY_DATE=$(date)
+echo "$DESCRIBE_VERSION-$BRANCH_NAME" > version.txt
+echo "$DEPLOY_DATE" >> version.txt
+
+### END ATUALIZANDO O SGI
+#########################
+
+
+
+#########################
 ### BEGIN ATUALIZA O CORE
 printf "\n\n"
 cd ~/public_html/
 
-# Garantindo que o git esteja com fileMode false
-printf "\n"
 echo 'Set file mode FALSE no GIT'
 /usr/local/cpanel/3rdparty/bin/git config core.fileMode false
 
 echo 'Versao atual do CORE DO NEWS '
 /usr/local/cpanel/3rdparty/bin/git describe
 printf "\n"
+
 echo 'Iniciando PULL do core ...'
-/usr/local/cpanel/3rdparty/bin/git pull && /usr/local/cpanel/3rdparty/bin/git describe > version.txt
-echo "DATE_DEPLOY="$(date) >> version.txt
-printf "\n"
-echo 'Versão do Core Implementada:'
-cat version.txt
+/usr/local/cpanel/3rdparty/bin/git pull 
+
+#Gera o txt com as infos nde versao
+DESCRIBE_VERSION=$(/usr/local/cpanel/3rdparty/bin/git describe)
+BRANCH_NAME=$(/usr/local/cpanel/3rdparty/bin/git rev-parse --abbrev-ref HEAD)
+DEPLOY_DATE=$(date)
+echo "$DESCRIBE_VERSION-$BRANCH_NAME" > version.txt
+echo "$DEPLOY_DATE" >> version.txt
+
 ### END ATUALIZA O CORE
+#######################
+
 
 
 #SETA PERMISSOES CORRETAS  image.php e index.php

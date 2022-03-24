@@ -23,7 +23,7 @@ printf "\n"
 echo 'Nova Versão Instalada:'
 /usr/bin/git describe 
 
-#Gera o txt com as infos no formato CSV
+#Gera o txt com as infos nde versao
 DESCRIBE_VERSION=$(/usr/bin/git describe)
 BRANCH_NAME=$(/usr/bin/git rev-parse --abbrev-ref HEAD)
 DEPLOY_DATE=$(date)
