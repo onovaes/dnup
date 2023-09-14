@@ -1,6 +1,7 @@
 #!/bin/bash
 
-printf "\n\nHOME ATUAL: $HOME"
+printf "\n\nHOME ATUAL:"
+echo $HOME
 
 # if not exists ~/public_html/application then clone
 if [ ! -d ~/public_html/application ]; then
