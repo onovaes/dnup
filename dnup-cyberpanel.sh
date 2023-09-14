@@ -22,7 +22,7 @@ if [ ! -d ~/public_html/application ]; then
     GIT_SSH_COMMAND='ssh -i ~/.ssh/dothnews_key -o IdentitiesOnly=yes' git clone git@bitbucket.org:dothcom/dothnews.git ~/public_html/
 else
     printf "\n\n"
-    echo '... Atualizando o CORE do NEWS'
+    printf "... Atualizando o CORE do DOTHNEWS em $HOME/public_html/"
     cd ~/public_html/
     GIT_SSH_COMMAND='ssh -i ~/.ssh/dothnews_key -o IdentitiesOnly=yes' git pull
 fi
@@ -39,7 +39,7 @@ if [ ! -d ~/public_html/dothnews ]; then
     GIT_SSH_COMMAND='ssh -i ~/.ssh/dothnews_key -o IdentitiesOnly=yes' git clone git@bitbucket.org:dothcom/sgi5.git ~/public_html/dothnews
 else
     printf "\n\n"
-    echo '... Atualizando o SGI'
+    printf "... Atualizando o SGI em $HOME/public_html/dothnews/"
     cd ~/public_html/dothnews/
     GIT_SSH_COMMAND='ssh -i ~/.ssh/dothnews_key -o IdentitiesOnly=yes' git pull
 fi
