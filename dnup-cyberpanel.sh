@@ -35,7 +35,7 @@ if [ ! -d ~/public_html/application ]; then
     #read -p "Press enter to continue or Ctrl+C to exit"
 
     printf "\n\n"
-    echo '... Clonando o CORE do NEWS'
+    printf "... Clonando o CORE do NEWS"
     GIT_SSH_COMMAND='ssh -i ~/.ssh/dothnews_key -o IdentitiesOnly=yes' git clone git@bitbucket.org:dothcom/dothnews.git ~/public_html/
 else
     printf "\n\n"
@@ -52,7 +52,7 @@ fi
 if [ ! -d ~/public_html/dothnews ]; then
     #read -p "Press enter to continue or Ctrl+C to exit"
     printf "\n\n"
-    echo '... Clonando o SGI'
+    printf "... Clonando o SGI"
     GIT_SSH_COMMAND='ssh -i ~/.ssh/dothnews_key -o IdentitiesOnly=yes' git clone git@bitbucket.org:dothcom/sgi5.git ~/public_html/dothnews
 else
     printf "\n\n"
@@ -63,7 +63,7 @@ fi
 
 if [ ! -f ~/public_html/.htaccess ]; then
     printf "\n\n"
-    echo '... Copiando o .htaccess'
+    printf "... Copiando o .htaccess"
     cp ~/public_html/pipeline/htaccess/.htaccess  .htaccess
 fi
 ## INSTALACAO/ATUALIZACAo DO SGI END
@@ -75,13 +75,13 @@ fi
 ##################################################################################
 ## SETA PERMISSOES CORRETAS  image.php e index.php, em arquivos e diretorios BEGIN
 printf "\n\n"
-echo 'Seta Permissão 644 nos arquivos image.php e index.php'
+printf "Seta Permissão 644 nos arquivos image.php e index.php"
 chmod 644 ~/public_html/image.php  
 chmod 644 ~/public_html/index.php
 chmod 644 ~/public_html/dothnews/index.php
 printf "\n"
 
-echo 'Seta Permissão 755 para 644 para files na pasta SGI'
+printf "Seta Permissão 755 para 644 para files na pasta SGI"
 find ~/public_html/dothnews -type d -print0 | xargs -0 chmod 0755
 find ~/public_html/dothnews -type f -print0 | xargs -0 chmod 0644
 printf "\n"
@@ -94,7 +94,7 @@ printf "\n"
 gera_versao()
 {
     printf "\n\n"
-    echo '... Gerando version.txt'
+    printf "... Gerando version.txt"
     DESCRIBE_VERSION=$(GIT_SSH_COMMAND='ssh -i ~/.ssh/dothnews_key -o IdentitiesOnly=yes' git describe)
     BRANCH_NAME=$(GIT_SSH_COMMAND='ssh -i ~/.ssh/dothnews_key -o IdentitiesOnly=yes' git rev-parse --abbrev-ref HEAD)
     DEPLOY_DATE=$(date)
