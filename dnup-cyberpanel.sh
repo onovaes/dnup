@@ -13,6 +13,11 @@ if [ ! -f ~/.ssh/dothnews_key ]; then
     echo "Chave dothnews_key não encontrada em ~/.ssh/dothnews_key" 1>&2
     exit 1
 fi
+
+if [ -z ${THEME_REPOSITORY+x} ]; then
+    echo "THEME_REPOSITORY env var is unset" 1>&2
+    exit 1
+fi
 # Algumas validações END
 ########################
 
@@ -86,12 +91,6 @@ printf "\n"
 
 #########################
 ## GERA version.txt BEGIN
-cd ~/public_html/
-gera_versao
-
-cd ~/public_html/dothnews/
-gera_versao 
-
 gera_versao()
 {
     printf "\n\n"
@@ -102,6 +101,12 @@ gera_versao()
     echo "$DESCRIBE_VERSION-$BRANCH_NAME" > version.txt
     echo "$DEPLOY_DATE" >> version.txt
 }
+
+cd ~/public_html/
+gera_versao
+
+cd ~/public_html/dothnews/
+gera_versao
 ## GERA version.txt END
 #######################
 
@@ -111,13 +116,8 @@ gera_versao()
 DIRETORIO_THEME=$(basename $HOME)
 echo $DIRETORIO_THEME
 if [ ! -d ~/public_html/application/themes/$DIRETORIO_THEME ]; then
-
-    # input your repo name
-    printf "\n\n"
-    read -p "Enter Bitbucket Theme Repo Name (Ex: dothcom/veja-o-bem): " REPONAME
-
-    echo 'Clonando $REPONAME tema em ~/public_html/application/themes/$DIRETORIO_THEME'
-    GIT_SSH_COMMAND='ssh -i ~/.ssh/dothnews_key -o IdentitiesOnly=yes' git clone git@bitbucket.org:$REPONAME.git ~/public_html/application/themes/$DIRETORIO_THEME
+    echo 'Clonando $THEME_REPOSITORY tema em ~/public_html/application/themes/$DIRETORIO_THEME'
+    GIT_SSH_COMMAND='ssh -i ~/.ssh/dothnews_key -o IdentitiesOnly=yes' git clone git@bitbucket.org:$THEME_REPOSITORY.git ~/public_html/application/themes/$DIRETORIO_THEME
 else
     printf "Atualizando o tema em ~/public_html/application/themes/$DIRETORIO_THEME\n"
     cd ~/public_html/application/themes/$DIRETORIO_THEME
