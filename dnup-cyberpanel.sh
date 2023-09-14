@@ -16,8 +16,6 @@ if [ ! -d ~/public_html/application ]; then
     printf "\nVerifique antes de continuar:\n\n"
     printf "  1. A chave pública dothnews_key.pub deve estar vinculada ao Access Key do Repositórios, Core, Sgi e Tema\n"
     printf "  2. O diretório $HOME/public_html/ deve estar vazio\n"
-    printf "\n\n"
-
     read -p "Deseja Prosseguir com nova instalação? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
     printf "\n\n"
     echo '... Clonando o CORE do NEWS'
