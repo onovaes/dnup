@@ -16,6 +16,19 @@ fi
 # Algumas validações END
 ########################
 
+confirm_continue()
+{
+    read -r -p "Continuar? [y/N] " response
+    response=${response,,}    # tolower
+    if [[ "$response" =~ ^(yes|y)$ ]]
+    then
+        echo 'Continuando...'
+    else
+        echo 'Desconectando...'
+        exit 1
+    fi
+}
+
 
 ######################################
 # INSTALACAO/ATUALIZACAo DO CORE BEGIN
@@ -23,7 +36,8 @@ if [ ! -d ~/public_html/application ]; then
     printf "\nVerifique antes de continuar:\n\n"
     printf "  1. A chave pública dothnews_key.pub deve estar vinculada ao Access Key do Repositórios, Core, Sgi e Tema\n"
     printf "  2. O diretório $HOME/public_html/ deve estar vazio\n"
-    #read -p "Deseja Prosseguir com nova instalação? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
+
+    confirm_continue
     printf "\n\n"
     echo '... Clonando o CORE do NEWS'
     GIT_SSH_COMMAND='ssh -i ~/.ssh/dothnews_key -o IdentitiesOnly=yes' git clone git@bitbucket.org:dothcom/dothnews.git ~/public_html/
@@ -40,7 +54,7 @@ fi
 #####################################
 # INSTALACAO/ATUALIZACAo DO SGI BEGIN
 if [ ! -d ~/public_html/dothnews ]; then
-    #read -p "Nova instalação SGI? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
+    confirm_continue
     printf "\n\n"
     echo '... Clonando o SGI'
     GIT_SSH_COMMAND='ssh -i ~/.ssh/dothnews_key -o IdentitiesOnly=yes' git clone git@bitbucket.org:dothcom/sgi5.git ~/public_html/dothnews
