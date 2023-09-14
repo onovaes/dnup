@@ -27,7 +27,7 @@ if [ ! -d ~/public_html/application ]; then
     printf "  2. O diretório $HOME/public_html/ deve estar vazio;\n"
     printf "\n\n"
 
-    read -p "Press enter to continue or Ctrl+C to exit"
+    #read -p "Press enter to continue or Ctrl+C to exit"
 
     printf "\n\n"
     echo '... Clonando o CORE do NEWS'
@@ -45,7 +45,7 @@ fi
 #####################################
 # INSTALACAO/ATUALIZACAo DO SGI BEGIN
 if [ ! -d ~/public_html/dothnews ]; then
-    read -p "Press enter to continue or Ctrl+C to exit"
+    #read -p "Press enter to continue or Ctrl+C to exit"
     printf "\n\n"
     echo '... Clonando o SGI'
     GIT_SSH_COMMAND='ssh -i ~/.ssh/dothnews_key -o IdentitiesOnly=yes' git clone git@bitbucket.org:dothcom/sgi5.git ~/public_html/dothnews
