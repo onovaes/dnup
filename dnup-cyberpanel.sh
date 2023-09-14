@@ -15,16 +15,16 @@ fi
 if [ ! -d ~/public_html/application ]; then
     printf "\nVerifique antes de continuar:\n\n"
     printf "  1. A chave pública dothnews_key.pub deve estar vinculada ao Access Key do Repositórios, Core, Sgi e Tema\n"
-    printf "  2. O diretório ~public_html/ deve estar vazio\n"
+    printf "  2. O diretório $HOME/public_html/ deve estar vazio\n"
     printf "\n\n"
 
-    read -p "Nova instalação Core? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
+    read -p "Deseja Prosseguir com nova instalação? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
     printf "\n\n"
-    echo 'Clonando o CORE do NEWS'
+    echo '... Clonando o CORE do NEWS'
     GIT_SSH_COMMAND='ssh -i ~/.ssh/dothnews_key -o IdentitiesOnly=yes' git clone git@bitbucket.org:dothcom/dothnews.git ~/public_html/
 else
     printf "\n\n"
-    echo 'Atualizando o CORE do NEWS'
+    echo '... Atualizando o CORE do NEWS'
     cd ~/public_html/
     GIT_SSH_COMMAND='ssh -i ~/.ssh/dothnews_key -o IdentitiesOnly=yes' git pull
 fi
@@ -37,18 +37,18 @@ fi
 if [ ! -d ~/public_html/dothnews ]; then
     read -p "Nova instalação SGI? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
     printf "\n\n"
-    echo 'Clonando o SGI'
+    echo '... Clonando o SGI'
     GIT_SSH_COMMAND='ssh -i ~/.ssh/dothnews_key -o IdentitiesOnly=yes' git clone git@bitbucket.org:dothcom/sgi5.git ~/public_html/dothnews
 else
     printf "\n\n"
-    echo 'Atualizando o SGI'
+    echo '... Atualizando o SGI'
     cd ~/public_html/dothnews/
     GIT_SSH_COMMAND='ssh -i ~/.ssh/dothnews_key -o IdentitiesOnly=yes' git pull
 fi
 
 if [ ! -f ~/public_html/.htaccess ]; then
     printf "\n\n"
-    echo 'Copiando o .htaccess'
+    echo '... Copiando o .htaccess'
     cp ~/public_html/pipeline/htaccess/.htaccess  .htaccess
 fi
 ## INSTALACAO/ATUALIZACAo DO SGI END
@@ -85,7 +85,7 @@ gera_versao
 gera_versao()
 {
     printf "\n\n"
-    echo 'Gerando version.txt'
+    echo '... Gerando version.txt'
     DESCRIBE_VERSION=$(GIT_SSH_COMMAND='ssh -i ~/.ssh/dothnews_key -o IdentitiesOnly=yes' git describe)
     BRANCH_NAME=$(GIT_SSH_COMMAND='ssh -i ~/.ssh/dothnews_key -o IdentitiesOnly=yes' git rev-parse --abbrev-ref HEAD)
     DEPLOY_DATE=$(date)
