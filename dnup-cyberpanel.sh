@@ -3,8 +3,21 @@
 printf "\n\nHOME ATUAL:"
 echo $HOME
 
-# if not exists ~/public_html/application then clone
+# Verifica se o script está sendo executado como root
+if [ "$(id -u)" == "0" ]; then
+   echo "This script must NOT be run as root" 1>&2
+   exit 1
+fi
+
+
+######################################
+# INSTALACAO/ATUALIZACAo DO CORE BEGIN
 if [ ! -d ~/public_html/application ]; then
+    printf "Verifique antes de continuar:\n"
+    printf "A chave pública dothnews_key.pub deve estar vinculada ao Access Key do Repositórios, Core, Sgi e Tema\n"
+    printf "O diretório ~public_html/ deve estar vazio\n"
+    printf "\n\n"
+
     read -p "Nova instalação Core? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
     printf "\n\n"
     echo 'Clonando o CORE do NEWS'
@@ -15,8 +28,12 @@ else
     cd ~/public_html/
     GIT_SSH_COMMAND='ssh -i ~/.ssh/dothnews_key -o IdentitiesOnly=yes' git pull
 fi
+## INSTALACAO/ATUALIZACAo DO CORE END
+######################################
 
-# if not exists ~/public_html/dothnews then clone
+
+#####################################
+# INSTALACAO/ATUALIZACAo DO SGI BEGIN
 if [ ! -d ~/public_html/dothnews ]; then
     read -p "Nova instalação SGI? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
     printf "\n\n"
@@ -34,10 +51,14 @@ if [ ! -f ~/public_html/.htaccess ]; then
     echo 'Copiando o .htaccess'
     cp ~/public_html/pipeline/htaccess/.htaccess  .htaccess
 fi
+## INSTALACAO/ATUALIZACAo DO SGI END
+####################################
 
 
 
-#SETA PERMISSOES CORRETAS  image.php e index.php
+
+##################################################################################
+## SETA PERMISSOES CORRETAS  image.php e index.php, em arquivos e diretorios BEGIN
 printf "\n\n"
 echo 'Seta Permissão 644 nos arquivos image.php e index.php'
 chmod 644 ~/public_html/image.php  
@@ -45,21 +66,21 @@ chmod 644 ~/public_html/index.php
 chmod 644 ~/public_html/dothnews/index.php
 printf "\n"
 
-#SETA PERMISSOES CORRETAS todos arquivos
-printf "\n\n"
 echo 'Seta Permissão 755 para 644 para files na pasta SGI'
 find ~/public_html/dothnews -type d -print0 | xargs -0 chmod 0755
 find ~/public_html/dothnews -type f -print0 | xargs -0 chmod 0644
 printf "\n"
+## SETA PERMISSOES CORRETAS  image.php e index.php, em arquivos e diretorios END
+##################################################################################
 
 
-
+#########################
+## GERA version.txt BEGIN
 cd ~/public_html/
 gera_versao
 
 cd ~/public_html/dothnews/
 gera_versao 
-
 
 gera_versao()
 {
@@ -71,6 +92,9 @@ gera_versao()
     echo "$DESCRIBE_VERSION-$BRANCH_NAME" > version.txt
     echo "$DEPLOY_DATE" >> version.txt
 }
+## GERA version.txt END
+#######################
+
 
 #####################
 ## DEPLOY THEME BEGIN
@@ -93,10 +117,13 @@ fi
 ###################
 
 
-
-## MIGRATIONS E TESTES
+############################
+## MIGRATIONS E TESTES BEGIN
 printf "\n\nINICIO MIGRATIONS:\n"
 /usr/local/lsws/lsphp56/bin/php ~/public_html/index.php dnutils pre_migration
 /usr/local/lsws/lsphp56/bin/php ~/public_html/index.php update migrate
 /usr/local/lsws/lsphp56/bin/php ~/public_html/dothnews/index.php update migrate
 /usr/local/lsws/lsphp56/bin/php ~/public_html/index.php utest
+printf "\nFIM MIGRATIONS:\n"
+## MIGRATIONS E TESTES END
+##########################
