@@ -16,15 +16,12 @@ fi
 # Algumas validações END
 ########################
 
+## to bash 4.2 confirm continue
 confirm_continue()
 {
-    read -r -p "Continuar? [y/N] " response
-    response=${response,,}    # tolower
-    if [[ "$response" =~ ^(yes|y)$ ]]
-    then
-        echo 'Continuando...'
-    else
-        echo 'Desconectando...'
+    read -p "Pressione ENTER para continuar ou CTRL+C para cancelar" -n 1 -r
+    echo
+    if [[ ! $REPLY =~ ^$ ]]; then
         exit 1
     fi
 }
