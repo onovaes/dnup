@@ -32,7 +32,7 @@ confirm_continue()
 if [ ! -d ~/public_html/application ]; then
     printf "\nVerifique antes de continuar:\n\n"
     printf "  1. A chave pública dothnews_key.pub deve estar vinculada ao Access Key do Repositórios, Core, Sgi e Tema\n"
-    printf "  2. O diretório $HOME/public_html/ deve estar vazio\n"
+    printf "  2. O diretório $HOME/public_html/ deve estar vazio\n\n"
 
     confirm_continue
     printf "\n\n"
