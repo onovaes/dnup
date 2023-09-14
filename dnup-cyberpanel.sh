@@ -16,15 +16,7 @@ fi
 # Algumas validações END
 ########################
 
-## to bash 4.2 confirm continue
-confirm_continue()
-{
-    read -p "Pressione ENTER para continuar ou CTRL+C para cancelar" -n 1 -r
-    echo
-    if [[ ! $REPLY =~ ^$ ]]; then
-        exit 1
-    fi
-}
+
 
 
 ######################################
@@ -35,7 +27,8 @@ if [ ! -d ~/public_html/application ]; then
     printf "  2. O diretório $HOME/public_html/ deve estar vazio;\n"
     printf "\n\n"
 
-    confirm_continue
+    read -p "Press enter to continue or Ctrl+C to exit"
+
     printf "\n\n"
     echo '... Clonando o CORE do NEWS'
     GIT_SSH_COMMAND='ssh -i ~/.ssh/dothnews_key -o IdentitiesOnly=yes' git clone git@bitbucket.org:dothcom/dothnews.git ~/public_html/
@@ -52,7 +45,7 @@ fi
 #####################################
 # INSTALACAO/ATUALIZACAo DO SGI BEGIN
 if [ ! -d ~/public_html/dothnews ]; then
-    confirm_continue
+    read -p "Press enter to continue or Ctrl+C to exit"
     printf "\n\n"
     echo '... Clonando o SGI'
     GIT_SSH_COMMAND='ssh -i ~/.ssh/dothnews_key -o IdentitiesOnly=yes' git clone git@bitbucket.org:dothcom/sgi5.git ~/public_html/dothnews
