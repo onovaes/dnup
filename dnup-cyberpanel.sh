@@ -1,13 +1,20 @@
 #!/bin/bash
 
-printf "\n\nHOME ATUAL:"
-echo $HOME
 
-# Verifica se o script está sendo executado como root
+##########################
+# Algumas validações BEGIN
 if [ "$(id -u)" == "0" ]; then
    echo "This script must NOT be run as root" 1>&2
    exit 1
 fi
+
+
+if [ ! -f ~/.ssh/dothnews_key ]; then
+    echo "Chave dothnews_key não encontrada em ~/.ssh/dothnews_key" 1>&2
+    exit 1
+fi
+# Algumas validações END
+########################
 
 
 ######################################
