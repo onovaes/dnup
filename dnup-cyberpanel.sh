@@ -75,13 +75,13 @@ fi
 ##################################################################################
 ## SETA PERMISSOES CORRETAS  image.php e index.php, em arquivos e diretorios BEGIN
 printf "\n\n"
-printf "Seta Permissão 644 nos arquivos image.php e index.php"
+printf "... Seta Permissão 644 nos arquivos image.php e index.php"
 chmod 644 ~/public_html/image.php  
 chmod 644 ~/public_html/index.php
 chmod 644 ~/public_html/dothnews/index.php
 printf "\n"
 
-printf "Seta Permissão 755 para 644 para files na pasta SGI"
+printf "... Seta Permissão 755 para 644 para files na pasta SGI"
 find ~/public_html/dothnews -type d -print0 | xargs -0 chmod 0755
 find ~/public_html/dothnews -type f -print0 | xargs -0 chmod 0644
 printf "\n"
@@ -116,10 +116,10 @@ gera_versao
 DIRETORIO_THEME=$(basename $HOME)
 echo $DIRETORIO_THEME
 if [ ! -d ~/public_html/application/themes/$DIRETORIO_THEME ]; then
-    echo 'Clonando $THEME_REPOSITORY tema em ~/public_html/application/themes/$DIRETORIO_THEME'
+    echo '... Clonando $THEME_REPOSITORY tema em ~/public_html/application/themes/$DIRETORIO_THEME'
     GIT_SSH_COMMAND='ssh -i ~/.ssh/dothnews_key -o IdentitiesOnly=yes' git clone git@bitbucket.org:$THEME_REPOSITORY.git ~/public_html/application/themes/$DIRETORIO_THEME
 else
-    printf "Atualizando o tema em ~/public_html/application/themes/$DIRETORIO_THEME\n"
+    printf "... Atualizando o tema em ~/public_html/application/themes/$DIRETORIO_THEME\n"
     cd ~/public_html/application/themes/$DIRETORIO_THEME
     GIT_SSH_COMMAND='ssh -i ~/.ssh/dothnews_key -o IdentitiesOnly=yes' git pull
 fi
