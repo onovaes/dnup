@@ -63,7 +63,7 @@ fi
 
 if [ ! -f ~/public_html/.htaccess ]; then
     printf "\n\n"
-    printf "... Copiando o .htaccess"
+    printf "... Copiando o .htaccess para $HOME/public_html/"
     cp ~/public_html/pipeline/htaccess/.htaccess  ~/public_html/.htaccess
 fi
 ## INSTALACAO/ATUALIZACAo DO SGI END
