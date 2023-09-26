@@ -33,7 +33,7 @@ insert_config_in_htaccess()
         echo "# - Do not edit this section of the htaccess file!              -cp:ppd" >> $htaccess_file
         echo "#----------------------------------------------------------------cp:ppd" >> $htaccess_file
         echo "AuthType Basic" >> $htaccess_file
-        echo 'AuthName "Protected Folder"' >> $htaccess_file
+        echo 'AuthName "Protected Folder Generate by dnup script"' >> $htaccess_file
         echo 'AuthUserFile "/$home/.htpasswds/public_html/dothnews/passwd"' >> $htaccess_file
         echo "Require valid-user" >> $htaccess_file 
         echo "#----------------------------------------------------------------cp:ppd" >> $htaccess_file
