@@ -38,12 +38,12 @@ insert_config_in_htaccess()
         echo "#----------------------------------------------------------------cp:ppd" >> $htaccess_file
     fi
 
-    echo "htaccess file updated with password protected directorie in ~/public_html/dothnews/.htaccess"
+    echo "htaccess file updated with password protected directorie in $htaccess_file"
 }
 
 insert_config_in_htaccess
 
-#Gera o txt com as infos nde versao
+#Gera o txt com as infos de versao
 DESCRIBE_VERSION=$(/usr/local/cpanel/3rdparty/bin/git describe)
 BRANCH_NAME=$(/usr/local/cpanel/3rdparty/bin/git rev-parse --abbrev-ref HEAD)
 DEPLOY_DATE=$(date)
