@@ -16,11 +16,37 @@ echo 'Set file mode FALSE no GIT'
 echo 'Versao atual do SGI '
 /usr/local/cpanel/3rdparty/bin/git describe
 
+echo 'Checkout para garantir que .htaccess sera atualizado, pois o git não atualiza arquivos modificados'
+/usr/local/cpanel/3rdparty/bin/git checkout .htaccess
+
 printf "\n"
 echo 'Iniciando PULL do SGI ...'
-/usr/local/cpanel/3rdparty/bin/git pull 
+/usr/local/cpanel/3rdparty/bin/git pull
 
-#Gera o txt com as infos nde versao
+insert_config_in_htaccess()
+{
+    htaccess_file=~/public_html/dothnews/.htaccess
+
+    if [ -f $htaccess_file ]; then
+        echo "#----------------------------------------------------------------cp:ppd" >> $htaccess_file
+        echo "# Section managed by cPanel: Password Protected Directories     -cp:ppd" >> $htaccess_file
+        echo "# - Do not edit this section of the htaccess file!              -cp:ppd" >> $htaccess_file
+        echo "#----------------------------------------------------------------cp:ppd" >> $htaccess_file
+        echo "AuthType Basic" >> $htaccess_file
+        echo 'AuthName "Protected Folder Generate by dnup script"' >> $htaccess_file
+        echo "AuthUserFile \"$HOME/.htpasswds/public_html/dothnews/passwd\"" >> $htaccess_file
+        echo "Require valid-user" >> $htaccess_file
+        echo "#----------------------------------------------------------------cp:ppd" >> $htaccess_file
+        echo "# End section managed by cPanel: Password Protected Directories -cp:ppd"  >> $htaccess_file
+        echo "#----------------------------------------------------------------cp:ppd" >> $htaccess_file
+    fi
+
+    echo "htaccess file updated with password protected directorie in $htaccess_file"
+}
+
+insert_config_in_htaccess
+
+#Gera o txt com as infos de versao
 DESCRIBE_VERSION=$(/usr/local/cpanel/3rdparty/bin/git describe)
 BRANCH_NAME=$(/usr/local/cpanel/3rdparty/bin/git rev-parse --abbrev-ref HEAD)
 DEPLOY_DATE=$(date)
