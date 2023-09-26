@@ -34,7 +34,7 @@ insert_config_in_htaccess()
         echo "#----------------------------------------------------------------cp:ppd" >> $htaccess_file
         echo "AuthType Basic" >> $htaccess_file
         echo 'AuthName "Protected Folder Generate by dnup script"' >> $htaccess_file
-        echo 'AuthUserFile "/$home/.htpasswds/public_html/dothnews/passwd"' >> $htaccess_file
+        echo 'AuthUserFile "/$HOME/.htpasswds/public_html/dothnews/passwd"' >> $htaccess_file
         echo "Require valid-user" >> $htaccess_file 
         echo "#----------------------------------------------------------------cp:ppd" >> $htaccess_file
         echo "# End section managed by cPanel: Password Protected Directories -cp:ppd"  >> $htaccess_file
