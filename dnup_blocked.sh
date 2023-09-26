@@ -16,6 +16,9 @@ echo 'Set file mode FALSE no GIT'
 echo 'Versao atual do SGI '
 /usr/local/cpanel/3rdparty/bin/git describe
 
+echo 'Checkout para garantir que .htaccess sera atualizado, pois o git não atualiza arquivos modificados'
+/usr/local/cpanel/3rdparty/bin/git checkout .htaccess
+
 printf "\n"
 echo 'Iniciando PULL do SGI ...'
 /usr/local/cpanel/3rdparty/bin/git pull 
