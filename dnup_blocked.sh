@@ -24,7 +24,7 @@ insert_config_in_htaccess()
 {
     htaccess_file=~/public_html/dothnews/.htaccess
 
-    if [ ! -f $htaccess_file ]; then
+    if [    -f $htaccess_file ]; then
         echo "#----------------------------------------------------------------cp:ppd" >> $htaccess_file
         echo "# Section managed by cPanel: Password Protected Directories     -cp:ppd" >> $htaccess_file
         echo "# - Do not edit this section of the htaccess file!              -cp:ppd" >> $htaccess_file
@@ -37,6 +37,8 @@ insert_config_in_htaccess()
         echo "# End section managed by cPanel: Password Protected Directories -cp:ppd"  >> $htaccess_file
         echo "#----------------------------------------------------------------cp:ppd" >> $htaccess_file
     fi
+
+    echo "htaccess file updated with password protected directorie in ~/public_html/dothnews/.htaccess"
 }
 
 #Gera o txt com as infos nde versao
