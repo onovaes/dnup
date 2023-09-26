@@ -27,6 +27,8 @@ insert_config_in_htaccess()
 {
     htaccess_file=~/public_html/dothnews/.htaccess
 
+    echo $HOME
+
     if [ -f $htaccess_file ]; then
         echo "#----------------------------------------------------------------cp:ppd" >> $htaccess_file
         echo "# Section managed by cPanel: Password Protected Directories     -cp:ppd" >> $htaccess_file
@@ -34,7 +36,7 @@ insert_config_in_htaccess()
         echo "#----------------------------------------------------------------cp:ppd" >> $htaccess_file
         echo "AuthType Basic" >> $htaccess_file
         echo 'AuthName "Protected Folder Generate by dnup script"' >> $htaccess_file
-        echo 'AuthUserFile "/$HOME/.htpasswds/public_html/dothnews/passwd"' >> $htaccess_file
+        echo "AuthUserFile $HOME/public_html/dothnews/.htpasswd" >> $htaccess_file
         echo "Require valid-user" >> $htaccess_file 
         echo "#----------------------------------------------------------------cp:ppd" >> $htaccess_file
         echo "# End section managed by cPanel: Password Protected Directories -cp:ppd"  >> $htaccess_file
